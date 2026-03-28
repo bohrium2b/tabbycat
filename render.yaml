@@ -8,6 +8,7 @@ services:
     startCommand: "npm run render-server"
     envVars:
       - key: DATABASE_URL
+        sync: false
       - key: REDIS_HOST
         fromService:
           type: redis
@@ -23,7 +24,7 @@ services:
       - key: PYTHON_VERSION
         value: "3.12.3"
       - key: WEB_CONCURRENCY
-        value: 4
+        value: 1
       - key: TAB_DIRECTOR_EMAIL
         sync: false
       - key: TIME_ZONE
