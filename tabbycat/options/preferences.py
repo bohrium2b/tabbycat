@@ -478,6 +478,15 @@ class MaximumAdjScore(FloatPreference):
 
 
 @tournament_preferences_registry.register
+class AdjScoreStep(FloatPreference):
+    help_text = _("Score step allowed when entering adjudicator feedback scores, e.g. full points (1) or half points (0.5)")
+    verbose_name = _("Adjudicator score step")
+    section = feedback
+    name = 'adj_score_step'
+    default = 1.0
+
+
+@tournament_preferences_registry.register
 class FeedbackPaths(ChoicePreference):
     help_text = _("Used to inform available choices in the feedback forms for adjudicators (both online and printed) and feedback progress")
     verbose_name = _("Allow and expect feedback to be submitted by")
@@ -1187,6 +1196,17 @@ class PublicBreakingTeams(BooleanPreference):
     section = public_features
     name = 'public_breaking_teams'
     default = False
+
+
+@tournament_preferences_registry.register
+class PublicBreakMetricsToShow(IntegerPreference):
+    help_text = _("How many metrics from the team standings precedence to show on the public break page. "
+                  "For example, 2 shows only the first two metrics set in Standings. "
+                  "Use 0 to hide all metrics, or -1 to show all of them.")
+    verbose_name = _("Number of metrics to show on public break page")
+    section = public_features
+    name = 'public_break_metrics_to_show'
+    default = -1
 
 
 @tournament_preferences_registry.register
